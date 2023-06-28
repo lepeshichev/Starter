@@ -1,0 +1,80 @@
+регистрация клиента
+###
+POST localhost:8081/clients
+Content-Type: application/json
+{
+"id": 1234,
+"login": "asd",
+"password": "q1w2e3",
+"email": "123@yandex.ru",
+"basket" : null
+}
+
+получение клиента
+###
+GET localhost:8081/clients/1
+
+удаление клиента
+###
+DELETE localhost:8081/clients/1
+
+создание продукта
+###
+POST localhost:8081/products
+Content-Type: application/json
+{
+"id": 1234,
+"name": "Форель",
+"price": 100,
+"amount": 10
+}
+
+изменение продукта
+###
+PUT localhost:8081/products
+Content-Type: application/json
+{
+"id": 1234,
+"name": "Форель",
+"price": 100,
+"amount": 10
+}
+
+удаление продукта
+###
+DELETE localhost:8081/products/1
+
+получение отдельного продукта
+###
+GET localhost:8081/products/1
+
+получение списка продуктов c возможностью фильтрации по наименованию
+###
+GET localhost:8081/product?name=Окунь
+
+добавление продукта в корзину
+###
+POST localhost:8081/basket
+Content-Type: application/json
+{
+"id": 1234,
+"List<Product>": new ArrayList<>(),
+"promoCode": 123,
+}
+
+изменение количества продукта в корзине
+###
+PUT localhost:8081/basket
+Content-Type: application/json
+ {
+"id": 1234,
+"amount": 10
+}
+
+удаление продукта из корзины
+###
+DELETE localhost:8081/basket/1
+
+оплата
+###
+POST localhost:8081/payment
