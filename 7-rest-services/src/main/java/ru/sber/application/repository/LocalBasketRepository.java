@@ -1,11 +1,13 @@
 package ru.sber.application.repository;
 
+import org.springframework.stereotype.Repository;
 import ru.sber.application.entity.Basket;
 import ru.sber.application.entity.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class LocalBasketRepository implements BasketRepository {
 
     private List<Basket> baskets = new ArrayList<>(List.of(
