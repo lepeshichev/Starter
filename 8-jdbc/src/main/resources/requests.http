@@ -1,79 +1,82 @@
-
-# регистрация клиента
 ###
+# регистрация клиента
 POST localhost:8081/clients
 Content-Type: application/json
+
 {
-"id": 1234,
-"login": "asd",
-"password": "q1w2e3",
-"email": "123@yandex.ru"
+  "login": "asd",
+  "password": "q1w2e3",
+  "email": "123@yandex.ru"
 }
 
+###
 # получение клиента
-###
-GET localhost:8081/clients/1
+GET localhost:8081/clients/2
 
-# удаление клиента
 ###
+# удаление клиента
 DELETE localhost:8081/clients/1
 
-# создание продукта
 ###
+# создание продукта
 POST localhost:8081/products
 Content-Type: application/json
+
 {
-"name": "Форель",
-"price": 100,
-"amount": 10
+  "name": "Форель",
+  "price": 100,
+  "amount": 10
 }
 
-# изменение продукта
 ###
+# изменение продукта
 PUT localhost:8081/products
 Content-Type: application/json
+
 {
-"id": 1234,
-"name": "Форель",
-"price": 100,
-"amount": 10
+  "id": 1,
+  "name": "Форель",
+  "price": 150,
+  "amount": 10
 }
 
-# удаление продукта
 ###
+# удаление продукта
 DELETE localhost:8081/products/1
 
-# получение отдельного продукта
 ###
+# получение отдельного продукта
 GET localhost:8081/products/1
 
-# получение списка продуктов c возможностью фильтрации по наименованию
 ###
-GET localhost:8081/product?name=Окунь
+# получение списка продуктов c возможностью фильтрации по наименованию (-)
+GET localhost:8081/product?name=Креветки
 
-# добавление продукта в корзину
 ###
-POST localhost:8081/basket
+# добавление продукта в корзину
+POST localhost:8081/cart/1/product/1
 Content-Type: application/json
-{
-"id": 1234,
-"List<Product>": new ArrayList<>(),
-"promoCode": 123,
-}
 
 # изменение количества продукта в корзине
 ###
-PUT localhost:8081/basket
+PUT localhost:8081/cart/1/product/1
 Content-Type: application/json
- {
-"id": 1234,
-"amount": 10
+
+{
+  "amount": 100
 }
 
+###
 # удаление продукта из корзины
-###
-DELETE localhost:8081/basket/1
+DELETE localhost:8081/cart/1/product/1
 
-# оплата
+
 ###
+# оплата
 POST localhost:8081/payment
+Content-Type: application/json
+
+{
+  "cardNumber": 800,
+  "userId": 1
+}

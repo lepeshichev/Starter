@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class Basket {
+public class Cart {
     private long id;
     private List<Product> products;
     private long promoCode;
