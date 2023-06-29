@@ -34,6 +34,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable long id) {
+        log.info("Удаление продукта по id");
         boolean isDeleted = productRepository.deleteById(id);
         if (isDeleted) {
             return ResponseEntity.noContent().build();
@@ -44,6 +45,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable long id) {
+        log.info("Получение продукта по id");
         Optional<Product> product = productRepository.findById(id);
         if (product.isPresent()) {
             return ResponseEntity.ok().body(product.get());

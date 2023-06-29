@@ -14,11 +14,11 @@ public class LocalProductRepository implements ProductRepository {
 
     private List<Product> products = new ArrayList<>(List.of(
             new Product(1, "Креветки", BigDecimal.valueOf(385), 100),
-            new Product(1, "Кальмары", BigDecimal.valueOf(370), 5),
-            new Product(1, "Мидии", BigDecimal.valueOf(500), 50),
-            new Product(1, "Окунь", BigDecimal.valueOf(260), 10),
-            new Product(1, "Тунец", BigDecimal.valueOf(800), 5),
-            new Product(1, "Горбуша", BigDecimal.valueOf(170), 15)
+            new Product(2, "Кальмары", BigDecimal.valueOf(370), 5),
+            new Product(3, "Мидии", BigDecimal.valueOf(500), 50),
+            new Product(4, "Окунь", BigDecimal.valueOf(260), 10),
+            new Product(5, "Тунец", BigDecimal.valueOf(800), 5),
+            new Product(6, "Горбуша", BigDecimal.valueOf(170), 15)
     ));
 
     @Override

@@ -14,16 +14,16 @@ import java.util.Optional;
 @Repository
 public class DBProductRepository implements ProductRepository {
 
-    public static final String JDBC = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=root";
+    public static final String JDBC = "jdbc:postgresql://localhost:5432/postgres?currentSchema=products_lav&user=postgres&password=root";
 
     @Override
     public long save(Product product) {
         var insertSql = "INSERT INTO PRODUCT (id, name, price, count) VALUES (DEFAULT, ?,?,?);";
         try (var connection = DriverManager.getConnection(JDBC);
              var prepareStatement = connection.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS)) {
-            prepareStatement.setString(2, product.getName());
-            prepareStatement.setDouble(3, product.getPrice().doubleValue());
-            prepareStatement.setInt(4, product.getAmount());
+            prepareStatement.setString(1, product.getName());
+            prepareStatement.setDouble(2, product.getPrice().doubleValue());
+            prepareStatement.setInt(3, product.getAmount());
             prepareStatement.executeUpdate();
             ResultSet rs = prepareStatement.getGeneratedKeys();
             if (rs.next()) {

@@ -8,5 +8,6 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 public class Payment {
-    private BigDecimal amount;
+    private BigDecimal sum;
+    long userId;
 }

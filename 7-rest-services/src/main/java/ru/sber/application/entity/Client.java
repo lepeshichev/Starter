@@ -10,5 +10,5 @@ public class Client {
     private String login;
     private String password;
     private String email;
-    private Basket basket;
+    private Cart cart;
 }

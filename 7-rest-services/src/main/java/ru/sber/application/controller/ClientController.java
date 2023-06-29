@@ -20,12 +20,13 @@ public class ClientController {
 
     @PostMapping
     public long registerClient(@RequestBody Client client) {
-        log.info("Регистрация клиента {}", client);
+        log.info("Регистрация клиента: {}", client);
         return clientRepository.register(client);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClient(@PathVariable long id) {
+        log.info("Получение пользователя по id: {}", id);
         Optional<Client> client = clientRepository.getById(id);
         if (client.isPresent()) {
             return ResponseEntity.ok().body(client.get());
@@ -36,6 +37,7 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteClient(@PathVariable long id) {
+        log.info("Удаляем пользователя по id: {}", id);
         boolean isDeleted = clientRepository.deleteById(id);
         if (isDeleted) {
             return ResponseEntity.noContent().build();
