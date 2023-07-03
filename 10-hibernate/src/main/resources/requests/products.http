@@ -1,0 +1,39 @@
+###
+# создание продукта
+POST localhost:8081/products
+Content-Type: application/json
+
+{
+  "name": "Форель",
+  "price": 100,
+  "amount": 10
+}
+
+###
+# изменение продукта
+PUT localhost:8081/products
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Форель",
+  "price": 150,
+  "amount": 10
+}
+
+###
+# удаление продукта
+DELETE localhost:8081/products/6
+
+###
+# Получение списка продуктов
+GET localhost:8081/products
+Content-Type: application/json
+
+###
+# получение отдельного продукта
+GET localhost:8081/products/2
+
+###
+# получение списка продуктов c возможностью фильтрации по наименованию
+GET localhost:8081/products?name=Форель
