@@ -15,4 +15,4 @@ GET localhost:8081/clients/2
 
 ###
 # удаление клиента
-DELETE localhost:8081/clients/1
+DELETE localhost:8081/clients/8

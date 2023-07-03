@@ -24,7 +24,6 @@ public class BankApplication  implements BankApplicationInterface {
         if (card.isPresent()) {
             return card.get().getBalance();
         }
-        // todo: сделать так, чтобы не возвращалось исключение??
         throw new RuntimeException("Такой карты нет");
     }
 }

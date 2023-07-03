@@ -4,6 +4,6 @@ POST localhost:8081/payment
 Content-Type: application/json
 
 {
-  "cardNumber": 800,
+  "cardNumber": 123,
   "userId": 1
 }

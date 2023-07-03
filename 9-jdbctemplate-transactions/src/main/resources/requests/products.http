@@ -23,16 +23,16 @@ Content-Type: application/json
 
 ###
 # удаление продукта
-DELETE localhost:8081/products/1
+DELETE localhost:8081/products/6
 
 ###
 # Получение списка продуктов
-GET localhost:8080/products
+GET localhost:8081/products
 Content-Type: application/json
 
 ###
 # получение отдельного продукта
-GET localhost:8081/products/1
+GET localhost:8081/products/2
 
 ###
 # получение списка продуктов c возможностью фильтрации по наименованию

@@ -1,5 +1,6 @@
 package ru.sber.application.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sber.application.entity.Payment;
@@ -15,6 +16,7 @@ public class PaymentServiceImpl implements PaymentService {
     private ProductRepository productRepository;
     private BankApplicationInterface bankApplicationInterface;
 
+    @Autowired
     public PaymentServiceImpl(CartRepository cartRepository,
                               ProductRepository productRepository,
                               BankApplicationInterface bankApplicationInterface) {

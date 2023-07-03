@@ -34,8 +34,8 @@ public class DBClientRepository implements ClientRepository {
             PreparedStatement preparedStatement = con.prepareStatement(insertExpression, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, client.getLogin());
             preparedStatement.setString(2, client.getPassword());
-            preparedStatement.setLong(3, generateCart());
-            preparedStatement.setString(4, client.getEmail());
+            preparedStatement.setString(3, client.getEmail());
+            preparedStatement.setLong(4, generateCart());
             return preparedStatement;
         };
         jdbcTemplate.update(preparedStatementCreator, keyHolder);
@@ -52,15 +52,13 @@ public class DBClientRepository implements ClientRepository {
         };
         RowMapper<Client> userRowMapper = (resultSet, rowNum) -> {
             int userId = resultSet.getInt("id");
-            String login = resultSet.getString("login");
-            String email = resultSet.getString("email");
+            String username = resultSet.getString("username");
             String password = resultSet.getString("password");
+            String email = resultSet.getString("email");
             int idCart = resultSet.getInt("cart_id");
-            return new Client(userId, login, password, email, getCartById(idCart).get());
+            return new Client(userId, username, password, email, getCartById(idCart).get());
         };
-
         return jdbcTemplate.query(preparedStatementCreator, userRowMapper).stream().findAny();
-
     }
 
     @Override
@@ -87,15 +85,15 @@ public class DBClientRepository implements ClientRepository {
     }
 
     private Optional<Cart> getCartById(long idCart) {
-        var selectProductsExpression = "select * from products_carts pc where pc.id_product = p.id and id_cart = ?";
-        var selectExpression = "select * from carts where id = ?";
+        var selectExpression = "select * from products_carts pc, products p where pc.id_product = p.id and pc.id_cart = ?";
+        var getCartExpression = " select * from carts where id = ?";
         PreparedStatementCreator productPreparedStatementCreator = con -> {
-            var prepareStatement = con.prepareStatement(selectProductsExpression);
+            var prepareStatement = con.prepareStatement(selectExpression);
             prepareStatement.setInt(1, (int) idCart);
             return prepareStatement;
         };
         PreparedStatementCreator cartPreparedStatementCreator = con -> {
-            var prepareStatement = con.prepareStatement(selectExpression);
+            var prepareStatement = con.prepareStatement(getCartExpression);
             prepareStatement.setInt(1, (int) idCart);
             return prepareStatement;
         };
@@ -106,9 +104,7 @@ public class DBClientRepository implements ClientRepository {
             int amount = resultSet.getInt("amount");
             return new Product(id, name, price, amount);
         };
-        RowMapper<Cart> cartRowMapper = (resultSet, rowNum) ->
-                new Cart(idCart, jdbcTemplate.query(productPreparedStatementCreator, productRowMapper), 0);
+        RowMapper<Cart> cartRowMapper = (resultSet, rowNum) -> new Cart(idCart, jdbcTemplate.query(productPreparedStatementCreator, productRowMapper), 0);
         return jdbcTemplate.query(cartPreparedStatementCreator, cartRowMapper).stream().findAny();
-
     }
 }

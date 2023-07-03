@@ -1,11 +1,6 @@
 ###
-# добавление продукта в корзину
-POST localhost:8081/cart/1/product/1
-Content-Type: application/json
-
-###
 # добавление продуктов в корзину с указанием их количества
-POST localhost:8081/cart/1/product/1
+POST localhost:8081/cart/2/product/2
 Content-Type: application/json
 
 {
@@ -14,13 +9,13 @@ Content-Type: application/json
 
 ###
 # изменение количества продукта в корзине
-PUT localhost:8081/cart/1/product/1
+PUT localhost:8081/cart/2/product/2
 Content-Type: application/json
 
 {
-  "amount": 100
+  "amount": 1
 }
 
 ###
 # удаление продукта из корзины
-DELETE localhost:8081/cart/1/product/1
+DELETE localhost:8081/cart/2/product/2
