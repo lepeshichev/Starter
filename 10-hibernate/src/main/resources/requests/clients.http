@@ -1,0 +1,18 @@
+###
+# регистрация клиента
+POST localhost:8081/clients
+Content-Type: application/json
+
+{
+  "username": "asd",
+  "password": "q1w2e3",
+  "email": "123@yandex.ru"
+}
+
+###
+# получение клиента
+GET localhost:8081/clients/2
+
+###
+# удаление клиента
+DELETE localhost:8081/clients/8
