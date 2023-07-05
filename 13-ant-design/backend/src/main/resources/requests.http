@@ -1,0 +1,19 @@
+###
+# Добавление продукта
+POST localhost:8081/products
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Product",
+  "price": 1000,
+  "quantity": 1
+}
+
+###
+# Получение списка продуктов
+GET localhost:8081/products
+
+###
+# Удаление продукта по идентификатору
+DELETE localhost:8081/products/1
