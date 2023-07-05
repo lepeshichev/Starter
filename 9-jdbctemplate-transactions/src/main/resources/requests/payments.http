@@ -1,0 +1,9 @@
+###
+# оплата
+POST localhost:8081/payment
+Content-Type: application/json
+
+{
+  "cardNumber": 123,
+  "userId": 1
+}
