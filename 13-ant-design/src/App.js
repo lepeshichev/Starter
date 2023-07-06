@@ -1,14 +1,21 @@
 import React from "react";
 import { Layout, Row, Col } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
 import MainMenu from "./components/MainMenu";
 import ProductsList from "./components/ProductsList";
-import CreateProdutForm from "./components/CreateProdutForm";
+import CreateProductForm from "./components/CreateProductForm";
 import Cart from "./components/Cart";
 import Search from "./components/Search";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "./slices/AuthSlice";
+import RegistrationPage from "./components/RegistrationPage";
+import LoginPage from "./components/LoginPage";
 
 const App = () => {
+    //const {user: currentUser} = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+
   return (
       <Router>
         <Layout className="layout">
@@ -25,6 +32,7 @@ const App = () => {
                   alignItems: "center",
                   justifyContent: "right",
               }}/>
+
           </Header>
             <Header
                 style={{
@@ -54,10 +62,12 @@ const App = () => {
                       element={
                           <React.Fragment>
                               <ProductsList />
-                              <CreateProdutForm />
+                              <CreateProductForm />
                           </React.Fragment>
                       }
                   />
+                  <Route path="/register" element={<RegistrationPage/>}/>
+                  <Route path="/login" element={<LoginPage/>}/>
               </Routes>
             </div>
           </Content>

@@ -46,8 +46,8 @@ const deleteProduct = (id, dispatch) => {
 };
 
 const ProductService = {
-    getProducts: getProducts,
-    createProduct: createProduct,
+    getProducts,
+    createProduct,
     deleteProduct,
 };
 
